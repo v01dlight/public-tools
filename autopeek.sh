@@ -3,13 +3,15 @@
 if [ -z "$1" ]
 then
 	base64 -d <<<"H4sIADDLWl4AA3WO0Q2AMAhE/5mCARpvAUdpcg7S4eUoqRr1Gh6Qgwb3h0j/kRxTikIRgIOsulhIxyJFc8Dn00L0fXEBIEw7OXjx1ud2ou1xjXWyEYsKmRurniAGR979lv79lJ0BE53oFAEAAA==" | gunzip
-	echo "[*] AutoPeek: a script to automate the discovery of interesting web servers"
-	echo "[*]           Each ip in the specified range will be scanned for open ports 80 and 8080."
-	echo "[*]           An HTML report with screenshots will be generated for easy review."
-	echo "[*] Version : 1.0"
-	echo "[*] Author  : Eamon Mulholland"
-	echo "[*] GitHub  : v01dlight"
-	echo "[*] Usage   : $0 <ip range>"
+	echo ""
+	echo "[*] AutoPeek : a script to automate the discovery of interesting web servers"
+	echo "[*]            Each ip in the specified range will be scanned for open ports 80 and 8080."
+	echo "[*]            An HTML report with screenshots will be generated for easy review."
+	echo "[*] Version  : 1.0"
+	echo "[*] Author   : Eamon Mulholland"
+	echo "[*] GitHub   : v01dlight"
+	echo "[*] Requires : nmap, cutycapt, firefox"
+	echo "[*] Usage    : $0 <ip range>"
 exit 0
 fi
 
