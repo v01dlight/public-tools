@@ -14,13 +14,15 @@ then
 	mkdir autopeek_$1/images
 	touch autopeek_$1/report.html
 	report="autopeek_$1/report.html"
+	echo $report
 else
 	echo "The folder autopeek_$1 already exists!"
 	exit 0
 fi
 
-sudo nmap -sS -n -p80,8080 --open $1 -oG autopeek/nmap-scan_$1 #1>/dev/null &&
+sudo nmap -Pn -n -p80,8080 --open $1 -oG autopeek$1/nmap-scan_$1
 scan="autopeek_$1/nmap-scan_$1"
+echo $scan
 
 for ip in $(cat $scan | grep "80/" | grep -v "Nmap" | awk '{print $2}')
 do
@@ -32,4 +34,5 @@ echo "<HTML><BODY><BR>" > $report
 ls -1 autopeek_$1/images/*.png | awk -F : '{print $1":\n<BR><IMG SRC=\""$1""$2"\" width=600><BR>"}' >> $report
 
 echo "</BODY></HTML>" >> $report
+
 
