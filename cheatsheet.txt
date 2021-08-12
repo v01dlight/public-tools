@@ -81,3 +81,6 @@ sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt -o allow_other
 
 # file manipulation - remove duplicate lines
 sort file.txt | uniq -u
+
+# archiving - compress and archive every file in a directory (when you're in a directory that contains that directory)
+tar -czvf interesting_files.tar.gz -C interesting_files .
