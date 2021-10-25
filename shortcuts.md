@@ -1,6 +1,6 @@
 # Navigating Windows
 Open command window: Alt-F2
-Maximize window: Alt-F10
+Maximize window: F11
 Close window: Alt-F4
 Switch windows: Alt-Tab
 
@@ -21,4 +21,4 @@ Rename tab: Ctrl-Alt-B
 Exit terminator: Ctrl-Shift-Q
 
 # Nano
-Jump to end of file: Ctrl+W, Ctrl+V
+Jump to end of file: Ctrl-W, Ctrl-V
