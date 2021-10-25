@@ -80,7 +80,27 @@ sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt -o allow_other
 (wlan.fc.type_subtype == 0x0008) or (wlan.fc.type_subtype == 0x0000) or (wlan.fc.type_subtype == 0x0005)
 
 # file manipulation - remove duplicate lines
-sort file.txt | uniq -u
+sort file.txt | uniq
 
 # archiving - compress and archive every file in a directory (when you're in a directory that contains that directory)
 tar -czvf interesting_files.tar.gz -C interesting_files .
+
+# recon - internal - find devices on the local network
+netdiscover -r <CIDR range>
+arp-scan -l
+
+# admin - note taking - set up notes repo with github and ssh
+ssh-keygen -t rsa -C "name@example.com"
+# copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys
+ssh -T git@github.com
+git clone git@github.com:v01dlight/public-tools.git
+cd public-tools
+git remote set-url origin git@github.com:v01dlight/public-tools.git
+cp .bash_aliases ~
+source ~/.bash_aliases
+git config --global user.email "name@example.com"
+git config --global user.name "Your Name"
+gitter
+
+# admin - unzip a file
+sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
