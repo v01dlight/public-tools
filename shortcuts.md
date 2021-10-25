@@ -19,3 +19,6 @@ Rename window: Ctrl-Alt-W
 Rename pane: Ctrl-Alt-X
 Rename tab: Ctrl-Alt-B
 Exit terminator: Ctrl-Shift-Q
+
+# Nano
+Jump to end of file: Ctrl+W, Ctrl+V
