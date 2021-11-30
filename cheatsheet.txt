@@ -90,7 +90,7 @@ netdiscover -r <CIDR range>
 arp-scan -l
 
 # admin - note taking - set up notes repo with github and ssh
-ssh-keygen -t rsa -C "name@example.com"
+ssh-keygen -t ed25519 -C "name@example.com"
 # copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys
 ssh -T git@github.com
 git clone git@github.com:v01dlight/public-tools.git
