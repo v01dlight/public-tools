@@ -20,5 +20,10 @@ Rename pane: Ctrl-Alt-X
 Rename tab: Ctrl-Alt-B
 Exit terminator: Ctrl-Shift-Q
 
+# QTerminal
+Split vertically: Ctrl-Shift-D
+Split horizontally: Ctrl-Shift-R
+Search terminal output: Ctrl-Shift-F
+
 # Nano
 Jump to end of file: Ctrl-W, Ctrl-V
