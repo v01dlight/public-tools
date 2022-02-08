@@ -3,6 +3,7 @@ Open command window: Alt-F2
 Maximize window: F11
 Close window: Alt-F4
 Switch windows: Alt-Tab
+Open new terminal window: Ctrl-Alt-T
 
 # Screenshots
 Screenshot window to clipboard: Ctrl-Alt-Print
