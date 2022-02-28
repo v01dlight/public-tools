@@ -11,7 +11,7 @@ then
 	echo "[*] Author   : Eamon Mulholland"
 	echo "[*] GitHub   : v01dlight"
 	echo "[*] Requires : nmap, cutycapt, firefox"
-	echo "[*] Usage    : $0 <ip range>"
+	echo "[*] Usage    : $0 <ip list>"
 exit 0
 fi
 
@@ -21,7 +21,7 @@ then
 	exit 0
 fi
 
-sudo nmap -Pn -n -p80,8080 --open $1 -oG autopeek_nmap-scan_$1 &&
+sudo nmap -Pn -n -p80,8080 --open -iL $1 -oG autopeek_nmap-scan_$1 &&
 
 scan="autopeek_nmap-scan_$1"
 
