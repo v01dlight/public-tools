@@ -1,6 +1,12 @@
 alias la='ls --color=always -hla'
 
-alias htb='sudo openvpn ~/HTB/Voidlight.ovpn'
+# connect to Hack the Box
+alias htb='sudo openvpn ~/HTB/lab_Voidlight.ovpn'
+
+# query the cheatsheet; remember some entries may need a manual search since -A 1 only helps for one liners and some commands in the cheatsheet have more
+cheatsheet(){
+        grep -A 1 "$@" ~/public-tools/cheatsheet.txt
+}
 
 # fully updates the system, removed unneeded packages, and then reboots
 function apt-updater {
