@@ -3,6 +3,7 @@ Open command window: Alt-F2
 Maximize window: F11
 Close window: Alt-F4
 Switch windows: Alt-Tab
+Open new terminal window: Ctrl-Alt-T
 
 # Screenshots
 Screenshot window to clipboard: Ctrl-Alt-Print
@@ -19,6 +20,11 @@ Rename window: Ctrl-Alt-W
 Rename pane: Ctrl-Alt-X
 Rename tab: Ctrl-Alt-B
 Exit terminator: Ctrl-Shift-Q
+
+# QTerminal
+Split vertically: Ctrl-Shift-D
+Split horizontally: Ctrl-Shift-R
+Search terminal output: Ctrl-Shift-F
 
 # Nano
 Jump to end of file: Ctrl-W, Ctrl-V

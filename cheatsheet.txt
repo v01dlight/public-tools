@@ -103,6 +103,14 @@ cd public-tools
 git remote set-url origin git@github.com:v01dlight/public-tools.git
 cp .bash_aliases ~
 source ~/.bash_aliases
+# to make aliases auto load on Kali
+nano ~/.zshrc # append the following:
+"""
+# load custom aliases
+if [ -f ~/.bash_aliases ]; then
+        source ~/.bash_aliases
+fi
+"""
 git config --global user.email "name@example.com"
 git config --global user.name "Your Name"
 gitter
