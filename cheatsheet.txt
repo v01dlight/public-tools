@@ -147,3 +147,6 @@ python -c 'import pty;pty.spawn("/bin/bash");'
 #CTRL+Z
 stty raw -echo
 fg # this will be invisible
+
+# post exploitation - proof - moneyshot
+whoami && id && hostname && ifconfig
