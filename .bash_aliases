@@ -1,6 +1,6 @@
 alias la='ls --color=always -hla'
 
-alias htb='openvpn ~/HTB/Voidlight.ovpn'
+alias htb='sudo openvpn ~/HTB/Voidlight.ovpn'
 
 # fully updates the system, removed unneeded packages, and then reboots
 function apt-updater {
