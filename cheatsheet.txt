@@ -1,3 +1,18 @@
+# scanning - nmap - initial scan
+nmap -sC -sV -oA nmap/<NAME> 10.10.x.x #you can replace ip with '-iL targets.txt' if needed
+
+# scanning - nmap - checking UDP ports
+nmap -sU -oA nmap/<NAME>-udp 10.10.x.x
+
+# scanning - nmap - all ports
+nmap -sV -oA nmap/<NAME>-all-ports -p- 10.10.x.x
+
+# scanning - gobuster - enumerate subdomains
+gobuster vhost --url <NAME>.htb -w /usr/share/dnsrecon/subdomains-top1mil-20000.txt
+
+# scanning - dirb - enumerate directories
+dirb http://<NAME>.htb -r -o <NAME>.dirb
+
 # Python quick http server to host files for victims to pull down
 python -m SimpleHTTPServer <port>
 python3 -m http.server <port>
