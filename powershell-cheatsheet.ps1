@@ -31,3 +31,6 @@ Get-Process | Out-GridView
 
 # add a directory to the path (useful for running additional tools, like nmap)
 $env:Path += ";C:\Program Files\<PATH>\"
+
+# search nmap results on windows
+type .\nmap\<SCAN NAME>.gnmap | findstr "ssh"
