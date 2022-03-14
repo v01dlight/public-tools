@@ -1,4 +1,3 @@
-
 # learn about a command, get help
 get-help [cmdlet name]
 
@@ -6,7 +5,7 @@ get-help [cmdlet name]
 Start-Process powershell -credential ""
 
 # set a new password variable
-$password= ConvertTo-SecureString -String '[NEW PASSWORD HERE]' -AsPlainText -Force
+$password= ConvertTo-SecureString -String '<NEW PASSWORD>' -AsPlainText -Force
 
 # force password reset of a user
 Set-Aduser -identity [USER NAME HERE] -ChangePasswordAtLogon $true
@@ -21,7 +20,7 @@ get-aduser -filter {employeeid -notlike '*'} -properties created, employeeid, em
 get-aduser -properties * [USER NAME HERE]
 
 # convert Integer8 to Date 132078640703095831 (see here for more: https://adsecurity.org/?p=378)
-$Integer8 = “[NUMBER GOES HERE]”
+$Integer8 = “<NUMBER>”
 [datetime]::FromFileTimeUTC($Integer8)
 
 # spawn interactive data view GUI
@@ -29,3 +28,6 @@ Get-Process | Out-GridView
 
 # enable default parameters for a script... put this at the top
 [CmdletBinding()]
+
+# add a directory to the path (useful for running additional tools, like nmap)
+$env:Path += ";C:\Program Files\<PATH>\"
