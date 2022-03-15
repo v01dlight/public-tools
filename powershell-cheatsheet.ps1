@@ -34,3 +34,9 @@ $env:Path += ";C:\Program Files\<PATH>\"
 
 # search nmap results on windows
 type .\nmap\<SCAN NAME>.gnmap | findstr "ssh"
+
+# interact with SQL databases
+Install-Module -Name SimplySql
+Import-Module SimplySql
+Get-Module SimplySql
+Open-MySqlConnection -Server <IP> -Port 3306
