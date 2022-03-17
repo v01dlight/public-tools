@@ -11,10 +11,14 @@ cheatsheet(){
 # fully updates the system, removed unneeded packages, and then reboots
 function apt-updater {
 	sudo apt update &&
-	sudo apt dist-upgrade -Vy &&
+	echo "[+] Starting 'apt full-upgrade' now..."
+	sudo apt full-upgrade -Vy &&
+	echo "[+] ...done! Doing some cleanup..."
 	sudo apt autoremove -y &&
 	sudo apt autoclean &&
 	sudo apt clean &&
+	echo "[+] ...done! Now it's time to reboot. System will auto reboot in 5 minutes. CTRL + C to cancel."
+	sleep 5m &&
 	sudo reboot
 }
 
