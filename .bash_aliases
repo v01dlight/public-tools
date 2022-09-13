@@ -1,5 +1,7 @@
 alias la='ls --color=always -hla'
 
+alias grok-lair='ngrok http --host-header=lair.localhost https://lair.localhost:443'
+
 # connect to Hack the Box
 alias htb='sudo openvpn ~/HTB/lab_Voidlight.ovpn'
 
