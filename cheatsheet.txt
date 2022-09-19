@@ -175,3 +175,14 @@ whoami && id && hostname && ifconfig
 # privesc - scripts - download linPEAS
 wget "https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh" -O linpeas.sh
 
+# logging - screen - start session
+screen -S <session name>
+
+# logging - screen - show sessions
+screen -ls
+
+# logging - screen - detach from a session
+screen -D # or 'Ctrl+a, d' if you're currently in that session
+
+# logging - screen - reattach to a session
+screen -r
