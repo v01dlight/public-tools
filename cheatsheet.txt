@@ -7,6 +7,39 @@ nmap -sU -oA nmap/<NAME>-udp 10.10.x.x
 # scanning - nmap - all ports
 nmap -sV -oA nmap/<NAME>-all-ports -p- 10.10.x.x
 
+# scanning - nmap - Discovery Scan
+nmap -sn -n --max-retries=2 --initial-rtt-timeout=250ms --max-rtt-timeout=400ms --max-scan-delay=10 --stats-every=10s  -PE -PS7,9,13,21-23,25-26,37,53,79-81,88,106,110-111,113,119,135,139,143-144,179,199,389,427,443-445,465,513-515,543-544,548,554,587,631,646,873,990,993,995,1025-1029,1110,1433,1720,1723,1755,1900,2000-2001,2049,2121,2717,3000,3128,3306,3389,3986,4899,5000,5009,5051,5060,5101,5190,5357,5432,5631,5666,5800,5900-5901,6000-6002,6646,7070,8000,8008-8009,8080-8081,8443,8888,9000-9001,9090,9100,9102,9999-10001,32768,49152-49157 -PU53,67-69,111,123,135,137-139,161-162,445,500,514,520,631,996-999,1434,1701,1900,3283,4500,5353,49152-49157 -vv -iL hosts/scope.txt --excludefile hosts/excluded-hosts.txt -oA nmap/discovery;/opt/pushover.sh 'Disco Completed' 'Disco scan has completed.'
+
+# scanning - nmap - Create Livehosts.txt
+grep Up nmap/discovery.gnmap | awk '{print $2}' | sort -V | uniq > hosts/livehosts.txt
+
+# scanning - nmap - DNS Resolution of Hosts
+nmap -R -sL -iL hosts/scope.txt --excludefile hosts/excluded-hosts.txt -oA nmap/dns-discovery | grep "^Nmap scan report for" | grep -E "\(|\)" | awk '{print $5, $6}' > hosts/dns-hosts.txt
+
+# scanning - nmap - Pre-Profiling Scan
+nmap -sT -Pn --top-ports 200 -T3 --initial-rtt-timeout=250ms --min-rtt-timeout=50ms --max-rtt-timeout=500ms --max-scan-delay=5ms --max-retries=2 --open -vv -iL hosts/livehosts.txt --excludefile hosts/excluded-hosts.txt -oA nmap/pre-profile
+
+# scanning - nmap - Profiling Scan
+nmap -R -sT -sV -sU -Pn -p T:1-65535,U:53,67-69,111,123,135,137-139,161-162,445,500,514,520,631,996-999,1434,1701,1900,3283,4500,5353,49152-49154 -T3 --initial-rtt-timeout=250ms --min-rtt-timeout=50ms --max-rtt-timeout=500ms --max-scan-delay=5ms --max-retries=2 --stats-every=10s --open -vv -iL hosts/livehosts.txt --excludefile hosts/excluded-hosts.txt -oA nmap/profile;/opt/pushover.sh 'Profile Scan Completed' 'Profile scan has completed.'
+
+# scanning - nmap - Scripts and Services Scan
+nmap -R -sC -sV -O -Pn -p T:80,135,139,443,445,1433,1440,1452,3389,5022,5357,5985,9000,9003,11000,11001,11002,11003,11004,11005,11006,11007,11008,11009,11776,16001,49666,49667,65503,U:137 -T3 --initial-rtt-timeout=250ms --min-rtt-timeout=50ms --max-rtt-timeout=500ms --max-scan-delay=5ms --max-retries=2 --open -vv -iL hosts/livehosts.txt --excludefile hosts/excluded-hosts.txt -oA nmap/services-detail;/opt/pushover.sh 'Services Version Scan Completed' 'Services version scan has completed.'
+
+# scanning - nmap - Targeted Discovery Scan
+nmap -vvvv -sn -g443 -PE --max-rate=150 --min-hostgroup=25 --max-retries=2 --initial-rtt-timeout=250ms --max-rtt-timeout=400ms --max-scan-delay=5 --stats-every=10s -PS21-25,80,139,389,443,445,1099,1433,1521,2049,3260,3306,3389,4786,4848,5900,7001,8009,8443,8080,8081,8082,8880,20000,27017,55443 -PA21-25,80,139,389,443,445,1099,1433,1521,2049,3260,3306,3389,4786,4848,5900,7001,8009,8443,8080,8081,8082,8880,20000,27017,55443 -PU161,623 --stats-every=10s -iL hosts/scope.txt -oA nmap/targeted-disco-scan
+
+# scanning - nmap - Targeted Profiling Scan
+nmap -R -sT -sV -sU -Pn -p T:7,9,13,21-23,25-26,37,53,79-81,88,106,110-111,113,119,135,139,143-144,179,199,389,427,443-445,465,513-515,543-544,548,554,587,631,646,873,990,993,995,1025-1029,1099,1110,1433,1521,1720,1723,1755,1900,2000-2001,2049,2121,2717,3000,3128,3260,3306,3389,3986,4786,4848,4899,5000,5009,5051,5060,5101,5190,5357,5432,5631,5666,5800,5900-5901,6000-6002,6646,7001,7070,8000,8008-8009,8080-8081,8443,8888,9000-9001,9090,9100,9102,9999-10001,27017,32768,49152-49157,55443,U:53,67-69,111,123,135,137-139,161-162,445,500,514,520,631,996-999,1434,1701,1900,3283,4500,5353,49152-49154 --max-rate=150 --min-hostgroup=25 --max-retries=2 --initial-rtt-timeout=250ms --max-rtt-timeout=400ms --max-scan-delay=5 --stats-every=10s --open -vv -iL hosts/livehosts.txt -oA nmap/targeted-profile-scan;/opt/pushover.sh 'Profile Scan Completed' 'Profile scan has completed.'
+
+# scanning - nmap - Segmentation Test
+nmap -sT -p1-65535 -Pn --min-rate=150 --max-rate=200 --min-hostgroup=25 --max-retries=2 --initial-rtt-timeout=250ms --max-rtt-timeout=400ms --max-scan-delay=5 --stats-every=10s -vv -iL hosts/cde-livehosts.txt --excludefile hosts/excluded-hosts.txt -oA nmap/segmentation;/opt/pushover.sh 'Segmentation Test Completed' 'Full 65k segmentation scan targing the CDE has completed.'
+
+# scanning - nmap - Sort IP addresses in a file:
+sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 scope-networks.txt
+
+# scanning - nmap - Create Scope Table CSV (for insert into Report table)
+sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 scope.txt | awk 'NR%4{printf "%s,",$0;next;}1'
+
 # scanning - gobuster - enumerate subdomains
 gobuster vhost --url <NAME>.htb -w /usr/share/dnsrecon/subdomains-top1mil-20000.txt
 
