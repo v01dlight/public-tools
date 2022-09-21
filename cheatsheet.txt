@@ -53,7 +53,7 @@ dirb http://<NAME>.htb -r -o <NAME>.dirb
 python -m SimpleHTTPServer <port>
 python3 -m http.server <port>
 
-# Simple Netcat listener
+# Simple netcat listener
 nc -lvnp <port>
 
 # create symbolic link (so github scripts can be called anywhere like apt packages)
