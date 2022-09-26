@@ -28,3 +28,9 @@ Search terminal output: Ctrl-Shift-F
 
 # Nano
 Jump to end of file: Ctrl-W, Ctrl-V
+
+# Mac
+Show hidden folders/files in Finder: CMD-Shift-[.]
+Go to folder (from within Finder or Desktop): CMD-Shift-G
+Copy invite link to clipboard in Zoom: CMD-Shift-I
+Copy screen region to clipboard as screenshot: CMD-Shift-4 (do CMD-Shift-5 forst and change default save location to clipboard)
