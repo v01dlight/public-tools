@@ -21,7 +21,7 @@ do
 	let COUNTER++
 	echo "[+] Trying guess $COUNTER: $password";
 	echo "[+] "$(date)
-	# trevorspray command here...
+	#trevorspray oneliner here; make sure to pass in $password
 	sleep 20m
 	echo "[+] 40 min till next attempt"
 	sleep 20m
