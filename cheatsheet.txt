@@ -227,9 +227,6 @@ screen -D # or 'Ctrl+a, d' if you're currently in that session
 
 # logging - screen - reattach to a session
 screen -r
-<<<<<<< HEAD
 
 # web - chrome - bypass privacy warning
 try typing “badidea” or “thisisunsafe” directly in chrome on the same page
-=======
->>>>>>> 2b431256d71490430048e5b135eea106206210f0
