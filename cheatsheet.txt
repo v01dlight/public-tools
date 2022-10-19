@@ -169,6 +169,14 @@ if [ -f ~/.bash_aliases ]; then
 fi
 """
 
+# admin - git - fix issue - error: object file ...  is empty - fatal: loose object ... is corrupt
+# remove any empty object files
+find .git/objects/ -type f -empty | xargs rm
+# fetch down the missing objects
+git fetch -p
+# do a full object store check
+git fsck --full
+
 # admin - unzip a file
 sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
 
@@ -219,6 +227,9 @@ screen -D # or 'Ctrl+a, d' if you're currently in that session
 
 # logging - screen - reattach to a session
 screen -r
+<<<<<<< HEAD
 
 # web - chrome - bypass privacy warning
 try typing “badidea” or “thisisunsafe” directly in chrome on the same page
+=======
+>>>>>>> 2b431256d71490430048e5b135eea106206210f0
