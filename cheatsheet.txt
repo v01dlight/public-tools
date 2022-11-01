@@ -233,3 +233,6 @@ john -w:/usr/share/wordlists/rockyou.txt user.hash
 
 # web - chrome - bypass privacy warning
 try typing “badidea” or “thisisunsafe” directly in chrome on the same page
+
+# exploit - kernel - compile 32 bit static ELF on kali if target does not have gcc
+gcc -Wall -m32 -static -o exploit exploit.c
