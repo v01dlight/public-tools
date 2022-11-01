@@ -49,8 +49,10 @@ gobuster dir -u http://<RHOST> -w /usr/share/wordlists/dirbuster/directory-list-
 # scanning - dirb - enumerate directories
 dirb http://<NAME>.htb -r -o <NAME>.dirb
 
-# Python quick http server to host files for victims to pull down
+# file transfer - python - quick http server to host files
 python -m SimpleHTTPServer <port>
+
+# file transfer - python 3 - quick http server to host files
 python3 -m http.server <port>
 
 # Simple netcat listener
