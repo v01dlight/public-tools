@@ -227,3 +227,6 @@ screen -D # or 'Ctrl+a, d' if you're currently in that session
 
 # logging - screen - reattach to a session
 screen -r
+
+# password cracking - john the ripper - dictionary attack with rockyou
+john -w:/usr/share/wordlists/rockyou.txt user.hash
