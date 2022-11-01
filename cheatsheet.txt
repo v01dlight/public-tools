@@ -236,3 +236,6 @@ try typing “badidea” or “thisisunsafe” directly in chrome on the same pa
 
 # exploit - kernel - compile 32 bit static ELF on kali if target does not have gcc
 gcc -Wall -m32 -static -o exploit exploit.c
+
+# post exploitation - databases - access a local mysql instance with creds
+mysql --host=localhost --user=<USER> --password=<PASS>
