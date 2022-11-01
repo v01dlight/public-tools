@@ -228,10 +228,8 @@ screen -D # or 'Ctrl+a, d' if you're currently in that session
 # logging - screen - reattach to a session
 screen -r
 
-<<<<<<< HEAD
 # password cracking - john the ripper - dictionary attack with rockyou
 john -w:/usr/share/wordlists/rockyou.txt user.hash
-=======
+
 # web - chrome - bypass privacy warning
 try typing “badidea” or “thisisunsafe” directly in chrome on the same page
->>>>>>> e7afe158476498f877ca82bf9656728d6da217ff
