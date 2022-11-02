@@ -242,5 +242,8 @@ gcc -Wall -m32 -static -o exploit exploit.c
 # post exploitation - databases - access a local mysql instance with creds
 mysql --host=localhost --user=<USER> --password=<PASS>
 
-# PWK - post-exploitation - reporting - moneyshot
-ifconfig && hostname && whoami && id && cat /root/proof.txt
+# post-exploitation - linux - reporting - moneyshot
+hostname && whoami && id && cat /root/proof.txt && ifconfig
+
+# post-exploitation - windows - reporting - moneyshot
+hostname && whoami && type c:\users\administrator\desktop\proof.txt && ipconfig
