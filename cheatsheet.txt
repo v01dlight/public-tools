@@ -1,3 +1,9 @@
+# general - powershell - check version
+$PSVersionTable.PSVersion
+
+# utility - powershell - unzip a file
+Expand-Archive -Path .\<FILENAME>.zip -DestinationPath .
+
 # scanning - nmap - initial scan
 nmap -sC -sV -oA nmap/<NAME> 10.10.x.x #you can replace ip with '-iL targets.txt' if needed
 
@@ -179,7 +185,7 @@ git fetch -p
 # do a full object store check
 git fsck --full
 
-# admin - unzip a file
+# utility - bash - unzip a file
 sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
 
 # active directory - LLMNR poisoning - grabbing hashes with responder
