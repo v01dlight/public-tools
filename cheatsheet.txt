@@ -271,3 +271,6 @@ smbclient -U '<DOMIAN>\<USER>' \\\\<IP>\\<SHARE>
 
 # enumeration - smb - recursively list all dirs and files
 smbmap -u "<USER>" -p "<PASSWORD>" -H <IP> -R
+
+# exfiltration - smb - recursively download all files in a directory (domain is only needed if the user is a domain joined user)
+smbget -U <DOMAIN>\<USER> smb://<HOST>/<SHARE> -R
