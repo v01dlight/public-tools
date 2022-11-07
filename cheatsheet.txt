@@ -265,3 +265,6 @@ crackmapexec <SERVICE> <IP RANGE> -u <USER> -p '<PASSWORD>' | tee crackmapexec_<
 
 # enumeration - smb - log into a server with smb creds
 smbmap -u "<USER>" -p "<PASSWORD>" -H <IP>
+
+# enumeration - smb - connect to a share with creds
+smbclient -U '<DOMIAN>\<USER>' \\\\<IP>\\<SHARE>
