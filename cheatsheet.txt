@@ -268,3 +268,6 @@ smbmap -u "<USER>" -p "<PASSWORD>" -H <IP>
 
 # enumeration - smb - connect to a share with creds
 smbclient -U '<DOMIAN>\<USER>' \\\\<IP>\\<SHARE>
+
+# enumeration - smb - recursively list all dirs and files
+smbmap -u "<USER>" -p "<PASSWORD>" -H <IP> -R
