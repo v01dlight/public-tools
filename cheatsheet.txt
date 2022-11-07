@@ -263,4 +263,5 @@ impacket-GetUserSPNs -outputfile <DOMAIN>-spns.hashes -request -dc-ip <IP> <DOMA
 # scanning - crackmapexec - checking credentials against a network
 crackmapexec <SERVICE> <IP RANGE> -u <USER> -p '<PASSWORD>' | tee crackmapexec_<SERVICE>_<USER>_creds.out
 
-
+# enumeration - smb - log into a server with smb creds
+smbmap -u "<USER>" -p "<PASSWORD>" -H <IP>
