@@ -49,8 +49,8 @@ sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4 scope.txt | awk 'NR%4{printf "%s,",$0;n
 # scanning - gobuster - enumerate subdomains
 gobuster vhost --url <NAME>.htb -w /usr/share/dnsrecon/subdomains-top1mil-20000.txt
 
-# scanning - gobuster - enumerate directories
-gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://<RHOST> -o gobuster.out
+# scanning - gobuster - enumerate directories (and files)
+gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,asp,aspx,html -u http://<RHOST> -o gobuster.out
 
 # scanning - dirb - enumerate directories
 dirb http://<NAME>.htb -r -o <NAME>.dirb
