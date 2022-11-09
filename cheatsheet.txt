@@ -296,3 +296,8 @@ xfreerdp /u:<USER> /v:<IP> /p:<PASSWORD>
 
 # maintaining access - persistence - rdp to a machine with a hash
 xfreerdp /u:<USER> /v:<IP> /pth:<HASH>
+
+# windows - .NET - determine version installed
+reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP" /s
+
+
