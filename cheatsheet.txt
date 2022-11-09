@@ -300,4 +300,5 @@ xfreerdp /u:<USER> /v:<IP> /pth:<HASH>
 # windows - .NET - determine version installed
 reg query "HKLM\SOFTWARE\Microsoft\Net Framework Setup\NDP" /s
 
-
+# post-exploitation - mimikatz - parse output
+grep -B 2 NTLM mimi.out | grep -v Domain | cut -d ':' -f 2
