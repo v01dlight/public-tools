@@ -305,3 +305,14 @@ grep -B 2 NTLM mimi.out | grep -v Domain | cut -d ':' -f 2
 
 # post-exploitation - mimikatz - run exe as a oneliner
 .\mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit
+
+# scanning - autorecon - installing
+sudo apt install seclists curl dnsrecon enum4linux feroxbuster gobuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf
+sudo apt install python3-venv
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+source ~/.zshrc
+pipx install git+https://github.com/Tib3rius/AutoRecon.git
+
+# scanning - autorecon - default way to run
+sudo $(which autorecon) -t targets.txt -o hosts
