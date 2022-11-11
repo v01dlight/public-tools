@@ -346,3 +346,6 @@ ss -antp
 
 # networking - windows - list services listening locally
 netstat -anpb TCP
+
+# lateral movement - windows - living off the land - use creds to get a shell from one windows machine to another on the same network
+winrs -remote:<HOSTNAME> -u:<USER> -p:<PASSWORD> cmd
