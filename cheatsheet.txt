@@ -331,3 +331,8 @@ ssh -N -L 0.0.0.0:<LPORT>:<RHOST>:<RPORT> <USER>@<IP TO TUNNEL THROUGH>
 
 # proxy - tunneling - ssh - dynamic port forwarding - pipe all traffic to a given local port through a host you can ssh to
 ssh -N -D 127.0.0.1:<LPORT> <USER>@<IP TO TUNNEL THROUGH>
+sudo nano /etc/proxychains.conf
+# add this line
+socks4  127.0.0.1 <LPORT>
+sudo proxychains <COMMAND TO PROXY>
+# you can also point Burp through the proxy by specifying 127.0.0.1 and <LPORT> in the SOCKS section of User Options
