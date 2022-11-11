@@ -325,7 +325,9 @@ ssh -N -R 127.0.0.1:<INTERNAL PORT>:<KALI IP>:<LPORT> <USER>@<RHOST>
 ssh -N -R <KALI IP>:<LPORT>:127.0.0.1:<INTERNAL PORT> <KALI USER>@<KALI IP>
 # then interact with it from kali by pointing stuff at localhost:<LPORT>
 
-# proxy - tunneling - ssh - connect to a service reachable by a box you can ssh to but not you
+# proxy - tunneling - ssh - local port forwarding - connect to a service reachable by a box you can ssh to but not you
 ssh -N -L 0.0.0.0:<LPORT>:<RHOST>:<RPORT> <USER>@<IP TO TUNNEL THROUGH>
 # then point kali tools at localhost:<LPORT> and you'll be interacting with <RHOST>:<RPORT>
 
+# proxy - tunneling - ssh - dynamic port forwarding - pipe all traffic to a given local port through a host you can ssh to
+ssh -N -D 127.0.0.1:<LPORT> <USER>@<IP TO TUNNEL THROUGH>
