@@ -316,3 +316,16 @@ pipx install git+https://github.com/Tib3rius/AutoRecon.git
 
 # scanning - autorecon - default way to run
 sudo $(which autorecon) -t targets.txt -o hosts
+
+# proxy - tunneling - ssh - remote port forwarding - expose an internal service on a box you can ssh to
+ssh -N -R 127.0.0.1:<INTERNAL PORT>:<KALI IP>:<LPORT> <USER>@<RHOST>
+# then interact with it from kali by pointing stuff at localhost:<LPORT>
+
+# proxy - tunneling - ssh - remote port forwarding - expose an internal service on a box that can ssh TO YOU
+ssh -N -R <KALI IP>:<LPORT>:127.0.0.1:<INTERNAL PORT> <KALI USER>@<KALI IP>
+# then interact with it from kali by pointing stuff at localhost:<LPORT>
+
+# proxy - tunneling - ssh - connect to a service reachable by a box you can ssh to but not you
+ssh -N -L 0.0.0.0:<LPORT>:<RHOST>:<RPORT> <USER>@<IP TO TUNNEL THROUGH>
+# then point kali tools at localhost:<LPORT> and you'll be interacting with <RHOST>:<RPORT>
+
