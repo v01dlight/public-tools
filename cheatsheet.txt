@@ -336,3 +336,9 @@ sudo nano /etc/proxychains.conf
 socks4  127.0.0.1 <LPORT>
 sudo proxychains <COMMAND TO PROXY>
 # you can also point Burp through the proxy by specifying 127.0.0.1 and <LPORT> in the SOCKS section of User Options
+
+# networking - linux - list services listening locally
+ss -antp
+
+# networking - windows - list services listening locally
+netstat -anpb TCP
