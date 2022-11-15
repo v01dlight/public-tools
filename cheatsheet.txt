@@ -349,3 +349,7 @@ netstat -anpb TCP
 
 # lateral movement - windows - living off the land - use creds to get a shell from one windows machine to another on the same network
 winrs -remote:<HOSTNAME> -u:<USER> -p:<PASSWORD> cmd
+
+# active directory - AD - ldap - enumerating null sessions
+ldapsearch -H ldap://<IP> -x -b "<DOMAIN NAME>" | tee null_session_enumeration.txt
+
