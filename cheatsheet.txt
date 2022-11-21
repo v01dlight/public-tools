@@ -358,3 +358,11 @@ winrs -remote:<HOSTNAME> -u:<USER> -p:<PASSWORD> cmd
 # active directory - AD - ldap - enumerating null sessions
 ldapsearch -H ldap://<IP> -x -b "<DOMAIN NAME>" | tee null_session_enumeration.txt
 
+# troubleshooting - git - fix certificate (CAfile) issues for internally hosted gitlab repos and the like
+git config --global http.sslVerify false
+# do what you need to
+git config --global http.sslVerify true
+
+# scanning - external - perimeter assessments - jarvis - config with no lair
+sudo -E jarvis -x targets.txt -discovery -profile -nessus -f <NESSUS FOLDER> -user <NESSUS USER> -password '<NESSUS PASS>' -n <TARGET NAME> && /opt/pushover.sh 'Jarvis complete'
+
