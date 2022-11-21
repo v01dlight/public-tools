@@ -366,3 +366,5 @@ git config --global http.sslVerify true
 # scanning - external - perimeter assessments - jarvis - config with no lair
 sudo -E jarvis -x targets.txt -discovery -profile -nessus -f <NESSUS FOLDER> -user <NESSUS USER> -password '<NESSUS PASS>' -n <TARGET NAME> && /opt/pushover.sh 'Jarvis complete'
 
+# scanning - webapps - aquatone - take screenshots of what's runnning on all discovered webservers to identify login portals or other interesting pages
+cat scans/Profile_<TARGET NAME>.xml | aquatone -nmap -out screenshots
