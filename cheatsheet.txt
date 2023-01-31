@@ -374,3 +374,9 @@ git clone https://github.com/EOsinski22/tmuxLoggingSetup
 cd tmuxLoggingSetup && chmod +x installer.sh setup.sh
 ./installer.sh
 tmux new -s <SESSION NAME>
+CTRL+b, I #from tmux session
+exit
+./setup.sh
+tmux new -s <SESSION NAME>
+CTRL+b, I #from tmux session
+#should be good to go for future sessions at this point
