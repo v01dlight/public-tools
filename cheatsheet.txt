@@ -368,3 +368,9 @@ sudo -E jarvis -x targets.txt -discovery -profile -nessus -f <NESSUS FOLDER> -us
 
 # scanning - webapps - aquatone - take screenshots of what's runnning on all discovered webservers to identify login portals or other interesting pages
 cat scans/Profile_<TARGET NAME>.xml | aquatone -nmap -out screenshots
+
+# logging - tmux - setting up tmux
+git clone https://github.com/EOsinski22/tmuxLoggingSetup
+cd tmuxLoggingSetup && chmod +x installer.sh setup.sh
+./installer.sh
+tmux new -s <SESSION NAME>
