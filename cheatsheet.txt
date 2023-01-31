@@ -380,3 +380,8 @@ exit
 tmux new -s <SESSION NAME>
 CTRL+b, I #from tmux session
 #should be good to go for future sessions at this point
+
+# shortcuts - tmux - scrolling in a tmux session
+CRTL+b, [
+#to exit that mode:
+q
