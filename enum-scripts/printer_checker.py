@@ -1,3 +1,4 @@
+# credit: @waffl3ss
 import socket
 import argparse
 import sys
