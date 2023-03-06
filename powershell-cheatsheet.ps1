@@ -1,7 +1,7 @@
 # learn about a command, get help
 get-help [cmdlet name]
 
-# run powershell as different user (DOMAIN\eamon.mulholland for example)
+# run powershell as different user (DOMAIN\user for example)
 Start-Process powershell -credential ""
 
 # set a new password variable
