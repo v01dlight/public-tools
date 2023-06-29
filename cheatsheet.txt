@@ -154,6 +154,18 @@ tar -czvf interesting_files.tar.gz -C interesting_files .
 netdiscover -r <CIDR range>
 arp-scan -l
 
+# version control - git - view name of current branch
+git rev-parse --abbrev-ref HEAD
+
+# version control - git - view all branches
+git branch
+
+# version control - git - switch branch
+git checkout <existing_branch>
+
+# version control - git - switch to a branch that doesn't exist yet
+git checkout -b <new_branch>
+
 # admin - note taking - initial set up - github and ssh
 ssh-keygen -t ed25519 -C "name@example.com"
 # copy ~/.ssh/id_ed25519.pub to https://github.com/settings/keys
