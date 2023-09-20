@@ -413,3 +413,6 @@ CTRL+b, x #kill current pane
 CTRL+b, <arrow key> #switch to pane in that direction
 CTRL+b, w #show all windows and panes
 CTRL+b, z #zoom into/out of a pane (very useful for copying cleanly from a vertical pane!)
+
+# search - regex - find all lines without a given character/pattern
+^((?!blah).)*$
