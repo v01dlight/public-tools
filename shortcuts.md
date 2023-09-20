@@ -35,3 +35,6 @@ Go to folder (from within Finder or Desktop): CMD-Shift-G
 Copy invite link to clipboard in Zoom: CMD-Shift-I
 Copy screen region to clipboard as screenshot: CMD-Shift-4 (do CMD-Shift-5 first and change default save location to clipboard)
 Home and End button equivalents from within terminal: CMD+left arrow, CMD+right arrow
+
+# VS Code
+Select all results from "Find" search: Alt+Enter (Mac: option+return)
