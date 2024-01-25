@@ -1,4 +1,6 @@
 #!/bin/bash
+# this script is a wrapper around https://github.com/gitleaks/gitleaks which enables results to be suppressed via a whitelist of false positives
+# it's intended for situations where the normal suppression by Fingerprint doesn't work because of dynamic filenames or something, such as when scanning a web bundle in a CI/CD pipeline
 
 # accept gitleaks report as an argument
 if [ -z "$1" ]
