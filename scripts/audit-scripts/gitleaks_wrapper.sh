@@ -1,4 +1,5 @@
 #!/bin/bash
+# this script is a wrapper around https://github.com/gitleaks/gitleaks which enables results to be suppressed via a whitelist of false positives
 
 # accept gitleaks report as an argument
 if [ -z "$1" ]
