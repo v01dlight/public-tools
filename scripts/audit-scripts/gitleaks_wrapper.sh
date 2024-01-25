@@ -12,6 +12,7 @@ WHITELIST_FILE="whitelist.txt"
 suppressed_issues=()
 ISSUE_NUM=0
 gitleaks_report_json_path="$1"
+FILTERED_ISSUES_FILE="gitleaks_filtered_issues.json"
 
 # loop through every issue in the report
 while read -r; do
@@ -24,7 +25,7 @@ while read -r; do
     while IFS= read -r not_secret
     do
         # if current finding is in the whitelist, then we don't consider it secret and can add it to a list of suppressed findings
-        if [ "$current_finding" == "$not_secret" ]; then
+        if [ "$current_finding" = "$not_secret" ]; then
             suppressed_issues+=( "$ISSUE_NUM" )
         fi
     done < <(cat $WHITELIST_FILE)
@@ -35,7 +36,8 @@ while read -r; do
         true
     else
         # if it's not then that means this finding isn't in the whitelist and we should print all the details for it
-        jq ".[$ISSUE_NUM]" "$gitleaks_report_json_path"
+        jq ".[$ISSUE_NUM]" "$gitleaks_report_json_path" >> $FILTERED_ISSUES_FILE
+        echo ',' >> $FILTERED_ISSUES_FILE
     fi
 
     # Increment the issue number so we can keep track of where we are in the
@@ -45,6 +47,16 @@ while read -r; do
 
 done < <(jq -c '.[]' "$gitleaks_report_json_path")
 
-echo "Suppressed issues: ${suppressed_issues[*]}"
+# fix some formatting on the filtered issues file so it's a proper json array
+sed -i '' '$ s/.$//' $FILTERED_ISSUES_FILE
+echo '[' | cat - $FILTERED_ISSUES_FILE > temp && mv temp $FILTERED_ISSUES_FILE
+echo ']' >> $FILTERED_ISSUES_FILE
 
-#rm -v "gitleaks_report.json"
+# output the filteres issues file as a nicely formatted table
+cat $FILTERED_ISSUES_FILE | jq -r '(["RULE","SECRET","FILE","LINE"] | (.,map(length*"-"))), (.[] | [.RuleID, .Secret, .File, .StartLine]) | @tsv' | column -t
+
+# output a report on how many issues were suppressed by the whitelist
+printf "\n+++++++++\n"
+echo "${#suppressed_issues[*]} issues were suppressed by the whitelist: $WHITELIST_FILE"
+
+rm $FILTERED_ISSUES_FILE
