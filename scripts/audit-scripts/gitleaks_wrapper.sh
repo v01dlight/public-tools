@@ -16,7 +16,7 @@ gitleaks_report_json_path="$1"
 # loop through every issue in the report
 while read -r; do
     # extract the secret from the current issue
-    current_finding=$(jq ".[$ISSUE_NUM] | .Secret" "$gitleaks_report_json_path")
+    current_finding=$(jq -r ".[$ISSUE_NUM] | .Secret" "$gitleaks_report_json_path")
     #echo "current_finding: $current_finding"
     #echo $ISSUE_NUM
 
