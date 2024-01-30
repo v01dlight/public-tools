@@ -47,10 +47,12 @@ while read -r; do
             DESCRIPTION=$(jq -r ".[$ISSUE_NUM] | .Description" "$gitleaks_report_json_path")
             LINE=$(jq -r ".[$ISSUE_NUM] | .StartLine" "$gitleaks_report_json_path")
             FILE=$(jq -r ".[$ISSUE_NUM] | .File" "$gitleaks_report_json_path")
+            MATCH=$(jq -r ".[$ISSUE_NUM] | .Match" "$gitleaks_report_json_path")
 
             echo "Description: $DESCRIPTION"
             echo "Line: $LINE"
             echo "File: $FILE"
+            echo "Match: $MATCH"
             echo "Secret: $current_finding"
             echo "To suppress, add '$hash' to $WHITELIST_FILE"
             echo ""
