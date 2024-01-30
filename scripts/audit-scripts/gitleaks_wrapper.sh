@@ -25,10 +25,11 @@ while read -r; do
     #echo $ISSUE_NUM
 
     # check each item in our whitelist of false postive secrets to see if any match the current finding
-    while IFS= read -r not_secret
+    while IFS= read -r suppressed_finding
     do
-        # if current finding is in the whitelist, then we don't consider it secret and can add it to a list of suppressed findings
-        if [ "$current_finding" = "$not_secret" ]; then
+        # if a hash of the current finding is in the whitelist, add it to a list of suppressed findings
+        hash=$(echo "$current_finding" | shasum | cut -f 1 -d " ")
+        if [ "$hash" = "$suppressed_finding" ]; then
             suppressed_issues+=( "$ISSUE_NUM" )
         fi
     done < <(cat $WHITELIST_FILE)
@@ -51,6 +52,7 @@ while read -r; do
             echo "Line: $LINE"
             echo "File: $FILE"
             echo "Secret: $current_finding"
+            echo "To suppress, add '$hash' to $WHITELIST_FILE"
             echo ""
         fi
     fi
