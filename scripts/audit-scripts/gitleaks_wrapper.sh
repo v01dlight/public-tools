@@ -10,7 +10,7 @@ exit 0
 fi
 
 # initialize variables
-WHITELIST_FILE="whitelist.txt"
+WHITELIST_FILE="gitleaks-web-bundle-whitelist.txt"
 suppressed_issues=()
 ISSUE_NUM=0
 gitleaks_report_json_path="$1"
