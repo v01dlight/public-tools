@@ -21,6 +21,7 @@ FILTERED_ISSUES_FILE="gitleaks_filtered_issues.json"
 while read -r; do
     # extract the secret from the current issue
     current_finding=$(jq -r ".[$ISSUE_NUM] | .Secret" "$gitleaks_report_json_path")
+    hash=$(echo "$current_finding" | shasum | cut -f 1 -d " ")
     #echo "current_finding: $current_finding"
     #echo $ISSUE_NUM
 
@@ -28,7 +29,6 @@ while read -r; do
     while IFS= read -r suppressed_finding
     do
         # if a hash of the current finding is in the whitelist, add it to a list of suppressed findings
-        hash=$(echo "$current_finding" | shasum | cut -f 1 -d " ")
         if [ "$hash" = "$suppressed_finding" ]; then
             suppressed_issues+=( "$ISSUE_NUM" )
         fi
