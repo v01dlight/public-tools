@@ -419,7 +419,7 @@ CTRL+b, z #zoom into/out of a pane (very useful for copying cleanly from a verti
 
 # update - burpsuite - kali
 # the burpsuite file in /usr/bin is a script, the actual JAR file is in a dir called /usr/share/burpsuite
-sudo mv /usr/share/burpsuite/burpsuite.jar /usr/share/burpsuite.jar.old
+sudo mv /usr/share/burpsuite/burpsuite.jar /usr/share/burpsuite/burpsuite.jar.old
 # download the latest JAR file from here: https://portswigger.net/burp/communitydownload?utm_source=burp_suite_community&utm_medium=update_button&utm_campaign=update_community
 sudo mv ~/Downloads/burpsuite[VERSION] /usr/share/burpsuite/burpsuite.jar
 sudo chmod +x /usr/share/burpsuite/burpsuite.jar
