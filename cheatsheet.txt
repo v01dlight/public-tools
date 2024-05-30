@@ -416,3 +416,6 @@ CTRL+b, z #zoom into/out of a pane (very useful for copying cleanly from a verti
 
 # search - regex - find all lines without a given character/pattern
 ^((?!blah).)*$
+
+# incident response - IR - list active connections
+netstat -anp | grep ESTABLISHED
