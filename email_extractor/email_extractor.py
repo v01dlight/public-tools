@@ -97,7 +97,7 @@ if __name__== "__main__":
     columns_to_print = [int(item) for item in args.print.split(',')]
 
     # Filter messages by subject line matching a regex
-    target_subject = re.compile(r"Offboarding Work Reminder for .*", re.IGNORECASE)
+    target_subject = re.compile(r".*REGEX PATTERN TO MATCH.*", re.IGNORECASE)
     #messages = messages.Restrict(f"[Subject] = '{target_subject}'")
 
     # Regex to match the date format in the subject (MM/DD/YYYY)
