@@ -8,7 +8,7 @@ import os
 # CLI argument parsing
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Scan mailbox for emails matching a subject line pattern, check for tables, and extract specific table data to Excel file")
-    parser.add_argument('-o', '--output-folder', type=str, default=".\output", help="Folder to save the Excel files (default: .\output)")
+    parser.add_argument('-o', '--output-folder', type=str, default=".\\output", help="Folder to save the Excel files (default: .\\output)")
     parser.add_argument('-c', '--columns', type=str, default="2, 4, 5, 6, 7", help="Table columns to extract (remember the first column is 0)")
     parser.add_argument('-p', '--print', type=str, default="5", help="Table column(s) to print")
     parser.add_argument('-e', '--email', type=str, default="YOUR_USER@outlook.com", help="Email address to use for the Outlook connection")
