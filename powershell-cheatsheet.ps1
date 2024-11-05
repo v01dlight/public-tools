@@ -41,5 +41,7 @@ Import-Module SimplySql
 Get-Module SimplySql
 Open-MySqlConnection -Server <IP> -Port 3306
 
-# search all files in a directory for a set of strings and return the full line where any are found
+# search all files in a directory for a set of strings and return the filepath and full line where any are found
 Get-ChildItem -Path . -File | Select-String -Pattern "MY_STRING", "MY_STRING_2" -List | ForEach-Object { "$($_.Path): $($_.Line)" }
+# if you just want the line and not the filepath
+Get-ChildItem -Path . -File | Select-String -Pattern "MY_STRING", "MY_STRING_2" -List | ForEach-Object { "$($_.Line)" }
