@@ -45,3 +45,63 @@ Open-MySqlConnection -Server <IP> -Port 3306
 Get-ChildItem -Path . -File | Select-String -Pattern "MY_STRING", "MY_STRING_2" -List | ForEach-Object { "$($_.Path): $($_.Line)" }
 # if you just want the line and not the filepath
 Get-ChildItem -Path . -File | Select-String -Pattern "MY_STRING", "MY_STRING_2" -List | ForEach-Object { "$($_.Line)" }
+
+## Add multiple Users to an AD group
+```powershell
+# by name
+Add-ADGroupMember -Identity "MY_GROUP" -Members user1, user2, user3
+
+# with a filter:
+Get-ADUser -Filter "title -eq 'account manager'" | ForEach-Object { Add-ADGroupMember -Identity "MY_GROUP" -Members $_ }
+```
+
+## get some details about a list of users
+```powershell
+user1, user2, user3 | ForEach-Object { Get-AdUser -Identity $_  -properties memberof}
+```
+
+## Check if a given list of users are in a given list of groups
+```powershell
+$users = "TestUsername1", "TestUsername2", "TestUsername3"
+$groups = "Group 1", "Group 2"
+
+foreach ($group in $groups) {
+    $members = Get-ADGroupMember -Identity $group -Recursive | Select -ExpandProperty SamAccountName
+
+    foreach ($user in $users) {
+        If ($members -contains $user) {
+            # Write-Host "$user is a member of $group"
+        } Else {
+            Write-Host "$user is not a member of $group"
+        }
+    }
+}
+```
+
+## Add one or more users to a list of groups and add the ticket number to the notes
+```powershell
+$users = "USER1", "USER2", "USER3"
+$groups = "GROUP1", "GROUP2", "GROUP3"
+
+foreach ($group in $groups) {
+  Add-ADGroupMember -Identity $group -Members $users
+  $group = Get-AdGroup $group -Properties info
+  $notes = $group.info
+  $notes += "RITM_NUM_HERE; "
+  Set-AdGroup $group -Replace @{info = $notes}
+}
+
+# to check your work (i.e. see if those users are now members of those groups and view the updated notes field)
+foreach ($group in $groups) {
+  $members = Get-ADGroupMember -Identity $group -Recursive | Select -ExpandProperty SamAccountName
+
+  foreach ($user in $users) {
+    If ($members -contains $user) {
+      Write-Host "$user is a member of $group"
+      Get-AdGroup $group -Properties info | select-object samaccountname, info | fl
+    } Else {
+        Write-Host "Check your work! $user is not a member of $group"
+    }
+  }
+}
+```
