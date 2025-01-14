@@ -1,4 +1,0 @@
-openpyxl
-pywin32
-pandas
-bs4
